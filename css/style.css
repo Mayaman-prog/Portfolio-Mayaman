@@ -7,18 +7,17 @@
 }
 
 /* Smooth Scrolling */
-htlm {
+html {
 	scroll-behavior: smooth;
 }
 
 /* Color Theme */
 :root {
-	--orange: $FF9F00;
+	--orange: #FF9F00;
 	--red-orange: #FF3D00;
     --blue: #00BFFF;
     --green: #00FF7F;
     --purple: #8A2BE2;
-
 	--bg: #f6f6f9;
     --text: #222;
     --light: #ffffff;
@@ -30,6 +29,7 @@ body {
 	background: var(--bg);
 	color: var(--text);
 	line-height: 1.6;
+	padding-top: 80px;
 }
 
 /* Navigation Bar */
@@ -37,6 +37,11 @@ header {
 	background: var(--purple);
 	padding: 15px 0;
 	box-shadow: 0 2px 10px var(--shadow);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
 }
 
 nav {
@@ -56,6 +61,7 @@ nav a {
 
 nav a:hover {
 	color: var(--green);
+	transform: scale(1.1);
 }
 
 /* Home Section */
@@ -70,12 +76,33 @@ nav a:hover {
 	color: var(--red-orange);
 }
 
+.typing {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid black;
+    width: 0;
+    animation: typing 3s steps(22, end) forwards;
+}
+
+@keyframes typing {
+    from { width: 0; border-right:2px solid black; }
+    to { width: 28ch; border-right:none }  /* number of characters */
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 #home img {
 	width: 200px;
 	height: 200px;
 	background: #ddd;
 	border-radius: 50%;
 	object-fit: cover;
+	border: 4px solid var(--blue);
 }
 
 /* About Section */
@@ -110,22 +137,17 @@ nav a:hover {
 
 /* Scrollable Projects */
 .projects-container {
-	max-height: 300px;
-	overflow-y: auto;
-	overflow-x: auto;
-	padding-right: 10px;
 	display: flex;
-	flex-wrap: nowrap;
 	gap: 20px;
-
-	/* Custom Scrollbar */
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 10px;
 	scrollbar-width: thin;
-	scrollbar-color: var(--blue) #cfefff;
+	scrollbar-color: var(--blue) #dff4ff;
 }
 
 .projects-container::-webkit-scrollbar {
 	height: 10px;
-	width: 10px;
 }
 
 .projects-container::-webkit-scrollbar-thumb {
@@ -134,7 +156,7 @@ nav a:hover {
 }
 
 .projects-container::-webkit-scrollbar-track{
-	background: #cfefff;
+	background: #dff4ff;
 }
 
 /* Project Box */
@@ -152,6 +174,23 @@ nav a:hover {
 	transform: translateY(-5px);
 	box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
 }
+
+/* Project Section Images */
+.projects-container .project-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on images */
+.projects-container .project-box img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 
 .project-box h3 {
 	margin-bottom: 10px;
@@ -177,6 +216,18 @@ nav a:hover {
 	font-size: 18px;
 }
 
+#contact i {
+	color: var(--purple);
+	margin-right: 8px;
+	font-size: 18px;
+	vertical-align: middle;
+	transition: color 0.3s ease;
+}
+
+#contact i:hover {
+	color: var(--green);
+}
+
 /* Form Section */
 #form {
 	max-width: 500px;
@@ -191,12 +242,17 @@ nav a:hover {
 	font-weight: bold;
 }
 
-#form input, #form text-area {
+#form input, #form textarea {
 	padding: 10px;
 	border: 2px solid var(--blue);
 	border-radius: 5px;
 	font-size: 16px;
 	width: 100%;
+}
+
+#form text-area {
+	min-height: 120px;
+	resize: vertical;
 }
 
 #form button {
@@ -212,6 +268,17 @@ nav a:hover {
 
 #form button:hover {
 	background: var(--orange);
+	transform: scale(1.03);
+}
+
+/*Footer*/
+footer {
+	text-align: center;
+	padding: 20px;
+	background: var(--purple);
+	color: var(--light);
+	margin-top: 40px;
+	font-size: 18px;
 }
 
 /* Responsive Design */
@@ -221,7 +288,11 @@ nav a:hover {
 	}
 
 	.project-box {
-		min-width: 200px;
+		min-width: 220px;
+	}
+
+	.projects-container.project-box img {
+		height: 180px;
 	}
 }
 
@@ -239,8 +310,12 @@ nav a:hover {
 	}
 
 	.project-box {
-		min-width: 180px;
+		min-width: 200px;
 	}
+
+	.projects-container .project-box img {
+        height: 150px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -253,7 +328,7 @@ nav a:hover {
 	}
 
 	.project-box {
-		min-width: 160px;
+		min-width: 180px;
 		padding: 15px;
 	}
 }
