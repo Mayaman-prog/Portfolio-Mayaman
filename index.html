@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 </head>
 <body>
+	 <div id="progress-container" aria-hidden="true">
+    <div id="progress-bar"></div>
+  </div>
 	<!-- Header Section -->
 	<header>
 		<nav>
@@ -82,17 +85,26 @@
 	<!-- Contact Section -->
 	<section id="contact">
 		<h2>Contact Me</h2>
+
 		<p>You can reach me through email or send me a message using the form below.</p>
-		<p><i class="fas fa-envelope"></i> <strong>Email:</strong> ramamit0315@gmail.com</p>
-		<p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Kathmandu, Nepal</p>
-		<p><i class="fas fa-phone"></i> <strong>Phone:</strong> +977 9707921003</p>
+		<p><i class="fas fa-envelope"></i> <strong>Email:</strong> 
+			<a href="mailto:ramamit0315@gmail.com" itemprop="email">ramamit0315@gmail.com</a>
+		</p>
+
+		<p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong>
+			<span itemprop="addressLocality">Kathmandu</span>, <span itemprop="addressCountry">Nepal</span>
+		</p>
+
+		<p><i class="fas fa-phone"></i> <strong>Phone:</strong>
+			<a href="tel:+9779707921003" itemprop="telephone">+977 97079 21003</a>
+		</p>
 	</section>
 	<hr>
 
 	<!-- Contact Form -->
 	<section id="form">
 		<label for="Name">Name: </label>
-		<input type="text" id="name" placeholder="ENter your name">
+		<input type="text" id="name" placeholder="Enter your name">
 
 		<label for="Email">Email: </label>
 		<input type="Email" id="email" placeholder="Enter your email">
